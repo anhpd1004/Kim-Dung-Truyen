@@ -18,6 +18,7 @@ namespace BTLDotNet.View
         private const int MAX_LIST_CHAP_WIDTH = 200;
         private int idt;
         private int idh;
+        private int iStory;//truyện được click từ bên NewHomePage truyền sang
 
         public HomePage()
         {
@@ -31,6 +32,21 @@ namespace BTLDotNet.View
                 MessageBox.Show(e.Message);
             }
             
+            MessageBox.Show("Wait a minute");
+        }
+        public HomePage(int iStory)
+        {
+            InitializeComponent();
+            this.iStory = iStory;
+            this.MinimumSize = new Size(Screen.PrimaryScreen.Bounds.Width / 2, (int)(Screen.PrimaryScreen.Bounds.Height * 0.7));
+            try
+            {
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+
             MessageBox.Show("Wait a minute");
         }
 
@@ -244,6 +260,11 @@ namespace BTLDotNet.View
                     }
                 }
             }
+
+        }
+
+        private void contentchap_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }
