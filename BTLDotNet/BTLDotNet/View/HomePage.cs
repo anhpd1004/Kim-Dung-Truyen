@@ -14,10 +14,11 @@ namespace BTLDotNet.View
 {
     public partial class HomePage : Form
     {
-        private const int MAX_LIST_STORY_WIDTH = 200;
+        private const int MAX_LIST_STORY_WIDTH = 200; 
         private const int MAX_LIST_CHAP_WIDTH = 200;
         private int idt;
         private int idh;
+        private int iStory;//truyện được click từ bên NewHomePage truyền sang
 
         public HomePage()
         {
@@ -31,6 +32,21 @@ namespace BTLDotNet.View
                 MessageBox.Show(e.Message);
             }
             
+            MessageBox.Show("Wait a minute");
+        }
+        public HomePage(int iStory)
+        {
+            InitializeComponent();
+            this.iStory = iStory;
+            this.MinimumSize = new Size(Screen.PrimaryScreen.Bounds.Width / 2, (int)(Screen.PrimaryScreen.Bounds.Height * 0.7));
+            try
+            {
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+
             MessageBox.Show("Wait a minute");
         }
 
@@ -61,11 +77,7 @@ namespace BTLDotNet.View
             contentchap.Height = (int)(this.Height * 0.75);
             contentchap.Location = new Point((int)(this.Width * 0.23), (int)(this.Height * 0.15));
 
-            lbStoryName.Width = this.Width;
-            lbStoryName.Location = new Point(0, menuStrip1.Height);
-
-            lbChapName.Width = this.Width;
-            lbChapName.Location = new Point(0, menuStrip1.Height + lbStoryName.Height);
+            
 
             if (this.WindowState == FormWindowState.Maximized)
             {
@@ -84,7 +96,6 @@ namespace BTLDotNet.View
             contentchap.Text = "";
             Model.Story story = (Model.Story)liststory.SelectedItem;
             idt = story.idt;
-            lbStoryName.Text = story.name;
             List<Model.Chapter> list = story.getChapters();
             listchap.DataSource = list;
         }
@@ -93,7 +104,6 @@ namespace BTLDotNet.View
         {
             Model.Chapter chap = (Model.Chapter)listchap.SelectedItem;
             idh = chap.idh;
-            lbChapName.Text = chap.name;
             contentchap.Text = chap.content.Replace("\r\n", "\n");
             MarkWrongRhythm();
 
@@ -244,6 +254,11 @@ namespace BTLDotNet.View
                     }
                 }
             }
+
+        }
+
+        private void contentchap_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }

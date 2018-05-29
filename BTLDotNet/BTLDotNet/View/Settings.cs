@@ -48,6 +48,7 @@ namespace BTLDotNet.View
             comboBox1.DataSource = items;
             comboBox1.SelectedIndex = size;
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox1.SelectedIndexChanged +=comboBox1_SelectedIndexChanged;
         }
 
         private void button1_Click(object sender, EventArgs e)

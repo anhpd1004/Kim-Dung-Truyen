@@ -21,6 +21,7 @@ namespace BTLDotNet.View
             InitializeComponent();
             this.AllowTransparency = true;
             this.FormBorderStyle = FormBorderStyle.None;
+            this.CenterToScreen();
             size = 0;
             this.MouseHover += NewHomePage_MouseHover;
             this.MouseLeave += NewHomePage_MouseLeave;
@@ -370,7 +371,9 @@ namespace BTLDotNet.View
 
         private void label1_Click(object sender, EventArgs e)
         {
-
+            HomePage AHXD = new HomePage(1);
+            this.Hide();
+            AHXD.Show();
         }
 
         private void label2_Click(object sender, EventArgs e)

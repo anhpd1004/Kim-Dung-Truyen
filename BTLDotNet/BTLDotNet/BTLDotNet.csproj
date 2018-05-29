@@ -76,11 +76,23 @@
     <Compile Include="View\InputData.Designer.cs">
       <DependentUpon>InputData.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\InputSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\InputSearch.Designer.cs">
+      <DependentUpon>InputSearch.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\NewHomePage.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\NewHomePage.Designer.cs">
       <DependentUpon>NewHomePage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ResultSeach.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ResultSeach.Designer.cs">
+      <DependentUpon>ResultSeach.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Settings.cs">
       <SubType>Form</SubType>
@@ -110,11 +122,17 @@
     <EmbeddedResource Include="View\InputData.resx">
       <DependentUpon>InputData.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\InputSearch.resx">
+      <DependentUpon>InputSearch.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\NewHomePage.resx">
       <DependentUpon>NewHomePage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\NewHomePage.vi.resx">
       <DependentUpon>NewHomePage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ResultSeach.resx">
+      <DependentUpon>ResultSeach.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Settings.resx">
       <DependentUpon>Settings.cs</DependentUpon>
@@ -168,6 +186,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\cancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo_06.png" />
+    <None Include="Resources\logo_05.png" />
+    <None Include="Resources\logo_04.png" />
+    <None Include="Resources\logo_03.png" />
+    <None Include="Resources\logo_02.png" />
+    <None Include="Resources\logo_01.png" />
+    <None Include="Resources\search_icon.PNG" />
+    <None Include="Resources\Exit_icon.PNG" />
+    <None Include="Resources\back.PNG" />
+    <None Include="Resources\back_to_home.PNG" />
+    <None Include="Resources\back_icon.png" />
+    <None Include="Resources\hinh_nen_truyen.jpg" />
+    <Content Include="Resources\logo_timkiem.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

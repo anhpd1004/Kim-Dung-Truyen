@@ -54,8 +54,8 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.label7 = new System.Windows.Forms.Label();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.picSettings = new System.Windows.Forms.PictureBox();
             this.picCancel = new System.Windows.Forms.PictureBox();
+            this.picSettings = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.wmpAnhHungXaDieu)).BeginInit();
             this.panel4.SuspendLayout();
@@ -71,8 +71,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.backgroundMusic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chemMusic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kiemXoet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picSettings)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picCancel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picSettings)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -230,7 +230,7 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(149, 17);
             this.label6.TabIndex = 1;
-            this.label6.Text = "Tiếu ngọa giang hồ";
+            this.label6.Text = "Tiếu ngạo giang hồ";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
@@ -328,17 +328,6 @@
             this.timer2.Interval = 200;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
-            // picSettings
-            // 
-            this.picSettings.BackgroundImage = global::BTLDotNet.Properties.Resources.settings;
-            this.picSettings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.picSettings.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picSettings.Location = new System.Drawing.Point(835, 2);
-            this.picSettings.Name = "picSettings";
-            this.picSettings.Size = new System.Drawing.Size(20, 20);
-            this.picSettings.TabIndex = 5;
-            this.picSettings.TabStop = false;
-            // 
             // picCancel
             // 
             this.picCancel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("picCancel.BackgroundImage")));
@@ -349,6 +338,18 @@
             this.picCancel.Size = new System.Drawing.Size(17, 17);
             this.picCancel.TabIndex = 6;
             this.picCancel.TabStop = false;
+            // 
+            // picSettings
+            // 
+            this.picSettings.BackgroundImage = global::BTLDotNet.Properties.Resources.settings;
+            this.picSettings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picSettings.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picSettings.Location = new System.Drawing.Point(843, 2);
+            this.picSettings.Margin = new System.Windows.Forms.Padding(0, 0, 0, 0);
+            this.picSettings.Name = "picSettings";
+            this.picSettings.Size = new System.Drawing.Size(20, 20);
+            this.picSettings.TabIndex = 5;
+            this.picSettings.TabStop = false;
             // 
             // NewHomePage
             // 
@@ -399,8 +400,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.backgroundMusic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chemMusic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kiemXoet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picSettings)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picCancel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picSettings)).EndInit();
             this.ResumeLayout(false);
 
         }
