@@ -14,90 +14,39 @@ namespace BTLDotNet.View
 {
     public partial class HomePage : Form
     {
-        private const int MAX_LIST_STORY_WIDTH = 200; 
-        private const int MAX_LIST_CHAP_WIDTH = 200;
-        private int idt;
+        private bool IsTurnOn = false;
         private int idh;
         private int iStory;//truyện được click từ bên NewHomePage truyền sang
+        private Model.Story story;
+        private NewHomePage newHome;
 
-        public HomePage()
+        public HomePage(int iStory, NewHomePage page)
         {
             InitializeComponent();
-            this.MinimumSize = new Size(Screen.PrimaryScreen.Bounds.Width / 2, (int)(Screen.PrimaryScreen.Bounds.Height * 0.7));
-            try
-            { 
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message);
-            }
-            
-            MessageBox.Show("Wait a minute");
-        }
-        public HomePage(int iStory)
-        {
-            InitializeComponent();
+            newHome = page;
             this.iStory = iStory;
-            this.MinimumSize = new Size(Screen.PrimaryScreen.Bounds.Width / 2, (int)(Screen.PrimaryScreen.Bounds.Height * 0.7));
-            try
-            {
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message);
-            }
-
-            MessageBox.Show("Wait a minute");
-        }
-
-        private void HomePage_Resize(object sender, EventArgs e)
-        {
-            resize();
         }
 
         private void HomePage_Load(object sender, EventArgs e)
         {
-            resize();
-            Model.Stories stories = Model.MyDatabase.getStories();
-            List<Model.Story> list = stories.getStories();
-            liststory.DataSource = list;
-        }
-
-        public void resize()
-        {
-            liststory.Width = (int)(this.Width * 0.2);
-            liststory.Height = (int)(this.Height * 0.75);
-            liststory.Location = new Point((int)(this.Width * 0.01), (int)(this.Height * 0.15));
-
-            listchap.Width = (int)(this.Width * 0.2);
-            listchap.Height = (int)(this.Height * 0.75);
-            listchap.Location = new Point((int)(this.Width * 0.775), (int)(this.Height * 0.15));
-
-            contentchap.Width = (int)(this.Width * 0.52);
-            contentchap.Height = (int)(this.Height * 0.75);
-            contentchap.Location = new Point((int)(this.Width * 0.23), (int)(this.Height * 0.15));
-
-            
-
-            if (this.WindowState == FormWindowState.Maximized)
-            {
-                liststory.Font = new Font(liststory.Font.FontFamily, 14);
-                listchap.Font = new Font(liststory.Font.FontFamily, 14);
-            }
-            else
-            {
-                liststory.Font = new Font(liststory.Font.FontFamily, 9);
-                listchap.Font = new Font(liststory.Font.FontFamily, 9);
-            }
-        }
-
-        private void liststory_SelectedValueChanged(object sender, EventArgs e)
-        {
             contentchap.Text = "";
-            Model.Story story = (Model.Story)liststory.SelectedItem;
-            idt = story.idt;
+            story = Model.MyDatabase.stories.getStories()[iStory];
             List<Model.Chapter> list = story.getChapters();
             listchap.DataSource = list;
+        }
+
+        protected override void WndProc(ref Message m)
+        {
+            switch (m.Msg)
+            {
+                case 0x84:
+                    base.WndProc(ref m);
+                    if ((int)m.Result == 0x1)
+                        m.Result = (IntPtr)0x2;
+                    return;
+            }
+
+            base.WndProc(ref m);
         }
 
         private void listchap_SelectedIndexChanged(object sender, EventArgs e)
@@ -153,12 +102,6 @@ namespace BTLDotNet.View
                     }
                 }
             }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Form input = new View.InputData();
-            input.Show();
         }
 
         private void contentchap_MouseMove(object sender, MouseEventArgs e)
@@ -236,13 +179,13 @@ namespace BTLDotNet.View
                                     dialogResult = MessageBox.Show("Bạn có muốn sửa từ này không?", "", MessageBoxButtons.YesNo);
                                     if (dialogResult == DialogResult.Yes)
                                     {
-                                        Form form = new EditErrorWord(idt, idh, start, end, contentchap.Text, strHover);
+                                        Form form = new EditErrorWord(iStory, idh, start, end, contentchap.Text, strHover);
                                         DialogResult result = form.ShowDialog(this);
                                         if (result == DialogResult.OK)
                                         {
                                             Model.Chapter chap = (Model.Chapter)listchap.SelectedItem;
                                             chap.content = Model.MyDatabase.getContentChap(idh);
-                                            
+
                                             contentchap.Text = chap.content.Replace("\r\n", "\n");
                                             MarkWrongRhythm();
                                             contentchap.Select(start, end - start + 1);
@@ -257,9 +200,57 @@ namespace BTLDotNet.View
 
         }
 
-        private void contentchap_TextChanged(object sender, EventArgs e)
+        private void pictureBox3_Click(object sender, EventArgs e)
         {
+            newHome.Dispose();
+            this.Dispose();
+        }
 
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            newHome.Show();
+            this.Hide();
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            InputSearch inpSearch = new InputSearch();
+            FormBlur formBlur = new FormBlur();
+            formBlur.Size = new Size(this.Width, this.Height);
+            formBlur.Location = new Point(0, 0);
+            formBlur.BackColor = this.BackColor;
+            formBlur.Show(this);
+            if (inpSearch.ShowDialog(this) == DialogResult.OK)
+            {
+                string text = inpSearch.getInputSearch();
+                ResultSearch result = new ResultSearch(this, text);
+            }
+            formBlur.Dispose();
+            inpSearch.Dispose();
+        }
+
+        private void pictureBox6_Click(object sender, EventArgs e)
+        {
+            if (!IsTurnOn)
+            {
+                this.BackColor = Color.FromArgb(111, 111, 112);
+                IsTurnOn = true;
+            }
+            else
+            {
+                this.BackColor = Color.Black;
+                IsTurnOn = false;
+            }
+        }
+
+        private void pictureBox5_Click(object sender, EventArgs e)
+        {
+            contextMenuStrip1.Show(pictureBox5, pictureBox5.Location);
+        }
+
+        private void ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            contentchap.BackColor = panel2.BackColor = (sender as ToolStripMenuItem).BackColor;
         }
     }
 }

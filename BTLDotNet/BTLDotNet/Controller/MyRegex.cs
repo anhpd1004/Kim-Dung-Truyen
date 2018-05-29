@@ -14,9 +14,9 @@ namespace BTLDotNet.Controller
         private String inputString;
         private String content;
         private int n;
-        private string storyname;
-        private string chapname;
         List<Match> listMatch = new List<Match>();
+        private String storyname;
+        private String chapname;
 
         public String InputString
         {

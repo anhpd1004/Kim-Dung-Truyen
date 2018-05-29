@@ -32,7 +32,7 @@ namespace BTLDotNet.View
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Model.Stories stories = Model.MyDatabase.getStories();
+            Model.Stories stories = Model.MyDatabase.stories;
             List<Model.Story> list = stories.getStories();
             comboBox1.DataSource = list;
         }

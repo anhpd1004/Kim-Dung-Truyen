@@ -56,6 +56,7 @@
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.picCancel = new System.Windows.Forms.PictureBox();
             this.picSettings = new System.Windows.Forms.PictureBox();
+            this.picSearch = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.wmpAnhHungXaDieu)).BeginInit();
             this.panel4.SuspendLayout();
@@ -73,15 +74,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.kiemXoet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picCancel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picSettings)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picSearch)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.wmpAnhHungXaDieu);
-            this.panel1.Location = new System.Drawing.Point(0, 100);
+            this.panel1.Location = new System.Drawing.Point(0, 123);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(290, 200);
+            this.panel1.Size = new System.Drawing.Size(387, 246);
             this.panel1.TabIndex = 0;
             // 
             // label1
@@ -91,9 +94,10 @@
             this.label1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.Lime;
-            this.label1.Location = new System.Drawing.Point(0, 183);
+            this.label1.Location = new System.Drawing.Point(0, 225);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(134, 17);
+            this.label1.Size = new System.Drawing.Size(153, 20);
             this.label1.TabIndex = 1;
             this.label1.Text = "Anh hùng xạ điêu";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -103,6 +107,7 @@
             // 
             this.wmpAnhHungXaDieu.Enabled = true;
             this.wmpAnhHungXaDieu.Location = new System.Drawing.Point(0, 0);
+            this.wmpAnhHungXaDieu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.wmpAnhHungXaDieu.Name = "wmpAnhHungXaDieu";
             this.wmpAnhHungXaDieu.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("wmpAnhHungXaDieu.OcxState")));
             this.wmpAnhHungXaDieu.Size = new System.Drawing.Size(290, 200);
@@ -112,9 +117,10 @@
             // 
             this.panel4.Controls.Add(this.label4);
             this.panel4.Controls.Add(this.wmpThienLongBatBo);
-            this.panel4.Location = new System.Drawing.Point(0, 330);
+            this.panel4.Location = new System.Drawing.Point(0, 406);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(290, 200);
+            this.panel4.Size = new System.Drawing.Size(387, 246);
             this.panel4.TabIndex = 0;
             // 
             // label4
@@ -125,9 +131,10 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.label4.ForeColor = System.Drawing.Color.Lime;
             this.label4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label4.Location = new System.Drawing.Point(0, 183);
+            this.label4.Location = new System.Drawing.Point(0, 225);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(136, 17);
+            this.label4.Size = new System.Drawing.Size(154, 20);
             this.label4.TabIndex = 1;
             this.label4.Text = "Thiên long bát bộ";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -137,6 +144,7 @@
             // 
             this.wmpThienLongBatBo.Enabled = true;
             this.wmpThienLongBatBo.Location = new System.Drawing.Point(0, 0);
+            this.wmpThienLongBatBo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.wmpThienLongBatBo.Name = "wmpThienLongBatBo";
             this.wmpThienLongBatBo.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("wmpThienLongBatBo.OcxState")));
             this.wmpThienLongBatBo.Size = new System.Drawing.Size(290, 200);
@@ -146,9 +154,10 @@
             // 
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.wmpThanDieuDaiHiep);
-            this.panel2.Location = new System.Drawing.Point(300, 100);
+            this.panel2.Location = new System.Drawing.Point(400, 123);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(290, 200);
+            this.panel2.Size = new System.Drawing.Size(387, 246);
             this.panel2.TabIndex = 0;
             // 
             // label2
@@ -158,9 +167,10 @@
             this.label2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.Color.Lime;
-            this.label2.Location = new System.Drawing.Point(0, 183);
+            this.label2.Location = new System.Drawing.Point(0, 225);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(144, 17);
+            this.label2.Size = new System.Drawing.Size(163, 20);
             this.label2.TabIndex = 1;
             this.label2.Text = "Thần điêu đại hiệp";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -170,6 +180,7 @@
             // 
             this.wmpThanDieuDaiHiep.Enabled = true;
             this.wmpThanDieuDaiHiep.Location = new System.Drawing.Point(0, 0);
+            this.wmpThanDieuDaiHiep.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.wmpThanDieuDaiHiep.Name = "wmpThanDieuDaiHiep";
             this.wmpThanDieuDaiHiep.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("wmpThanDieuDaiHiep.OcxState")));
             this.wmpThanDieuDaiHiep.Size = new System.Drawing.Size(290, 200);
@@ -179,9 +190,10 @@
             // 
             this.panel5.Controls.Add(this.label5);
             this.panel5.Controls.Add(this.wmpYThienDoLongKi);
-            this.panel5.Location = new System.Drawing.Point(300, 330);
+            this.panel5.Location = new System.Drawing.Point(400, 406);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(290, 200);
+            this.panel5.Size = new System.Drawing.Size(387, 246);
             this.panel5.TabIndex = 0;
             this.panel5.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
             // 
@@ -192,9 +204,10 @@
             this.label5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.label5.ForeColor = System.Drawing.Color.Lime;
-            this.label5.Location = new System.Drawing.Point(0, 183);
+            this.label5.Location = new System.Drawing.Point(0, 225);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(137, 17);
+            this.label5.Size = new System.Drawing.Size(157, 20);
             this.label5.TabIndex = 1;
             this.label5.Text = "Ỷ thiên Đồ long kí";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -204,6 +217,7 @@
             // 
             this.wmpYThienDoLongKi.Enabled = true;
             this.wmpYThienDoLongKi.Location = new System.Drawing.Point(0, 0);
+            this.wmpYThienDoLongKi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.wmpYThienDoLongKi.Name = "wmpYThienDoLongKi";
             this.wmpYThienDoLongKi.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("wmpYThienDoLongKi.OcxState")));
             this.wmpYThienDoLongKi.Size = new System.Drawing.Size(290, 200);
@@ -213,9 +227,10 @@
             // 
             this.panel6.Controls.Add(this.label6);
             this.panel6.Controls.Add(this.wmpTieuNgaoGiangHo);
-            this.panel6.Location = new System.Drawing.Point(600, 330);
+            this.panel6.Location = new System.Drawing.Point(800, 406);
+            this.panel6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(290, 200);
+            this.panel6.Size = new System.Drawing.Size(387, 246);
             this.panel6.TabIndex = 0;
             this.panel6.Paint += new System.Windows.Forms.PaintEventHandler(this.panel5_Paint);
             // 
@@ -226,9 +241,10 @@
             this.label6.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.label6.ForeColor = System.Drawing.Color.Lime;
-            this.label6.Location = new System.Drawing.Point(0, 183);
+            this.label6.Location = new System.Drawing.Point(0, 225);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(149, 17);
+            this.label6.Size = new System.Drawing.Size(168, 20);
             this.label6.TabIndex = 1;
             this.label6.Text = "Tiếu ngạo giang hồ";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -238,6 +254,7 @@
             // 
             this.wmpTieuNgaoGiangHo.Enabled = true;
             this.wmpTieuNgaoGiangHo.Location = new System.Drawing.Point(0, 0);
+            this.wmpTieuNgaoGiangHo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.wmpTieuNgaoGiangHo.Name = "wmpTieuNgaoGiangHo";
             this.wmpTieuNgaoGiangHo.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("wmpTieuNgaoGiangHo.OcxState")));
             this.wmpTieuNgaoGiangHo.Size = new System.Drawing.Size(290, 200);
@@ -247,9 +264,10 @@
             // 
             this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.wmpLocDinhKi);
-            this.panel3.Location = new System.Drawing.Point(600, 100);
+            this.panel3.Location = new System.Drawing.Point(800, 123);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(290, 200);
+            this.panel3.Size = new System.Drawing.Size(387, 246);
             this.panel3.TabIndex = 0;
             // 
             // label3
@@ -259,9 +277,10 @@
             this.label3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.label3.ForeColor = System.Drawing.Color.Lime;
-            this.label3.Location = new System.Drawing.Point(0, 183);
+            this.label3.Location = new System.Drawing.Point(0, 225);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(91, 17);
+            this.label3.Size = new System.Drawing.Size(107, 20);
             this.label3.TabIndex = 1;
             this.label3.Text = "Lộc Đỉnh Kí";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -271,6 +290,7 @@
             // 
             this.wmpLocDinhKi.Enabled = true;
             this.wmpLocDinhKi.Location = new System.Drawing.Point(0, 0);
+            this.wmpLocDinhKi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.wmpLocDinhKi.Name = "wmpLocDinhKi";
             this.wmpLocDinhKi.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("wmpLocDinhKi.OcxState")));
             this.wmpLocDinhKi.Size = new System.Drawing.Size(290, 200);
@@ -280,6 +300,7 @@
             // 
             this.backgroundMusic.Enabled = true;
             this.backgroundMusic.Location = new System.Drawing.Point(5, 8);
+            this.backgroundMusic.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.backgroundMusic.Name = "backgroundMusic";
             this.backgroundMusic.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("backgroundMusic.OcxState")));
             this.backgroundMusic.Size = new System.Drawing.Size(5, 5);
@@ -289,6 +310,7 @@
             // 
             this.chemMusic.Enabled = true;
             this.chemMusic.Location = new System.Drawing.Point(0, 0);
+            this.chemMusic.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chemMusic.Name = "chemMusic";
             this.chemMusic.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("chemMusic.OcxState")));
             this.chemMusic.Size = new System.Drawing.Size(1, 1);
@@ -299,6 +321,7 @@
             // 
             this.kiemXoet.Enabled = true;
             this.kiemXoet.Location = new System.Drawing.Point(0, 50);
+            this.kiemXoet.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.kiemXoet.Name = "kiemXoet";
             this.kiemXoet.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("kiemXoet.OcxState")));
             this.kiemXoet.Size = new System.Drawing.Size(0, 0);
@@ -315,9 +338,10 @@
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Bold);
             this.label7.ForeColor = System.Drawing.Color.Maroon;
             this.label7.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.label7.Location = new System.Drawing.Point(219, 10);
+            this.label7.Location = new System.Drawing.Point(292, 12);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(465, 70);
+            this.label7.Size = new System.Drawing.Size(620, 86);
             this.label7.TabIndex = 4;
             this.label7.Text = "Kim Dung Truyện";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -333,9 +357,10 @@
             this.picCancel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("picCancel.BackgroundImage")));
             this.picCancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.picCancel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picCancel.Location = new System.Drawing.Point(865, 3);
+            this.picCancel.Location = new System.Drawing.Point(1153, 4);
+            this.picCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.picCancel.Name = "picCancel";
-            this.picCancel.Size = new System.Drawing.Size(17, 17);
+            this.picCancel.Size = new System.Drawing.Size(23, 21);
             this.picCancel.TabIndex = 6;
             this.picCancel.TabStop = false;
             // 
@@ -344,21 +369,35 @@
             this.picSettings.BackgroundImage = global::BTLDotNet.Properties.Resources.settings;
             this.picSettings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.picSettings.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picSettings.Location = new System.Drawing.Point(843, 2);
-            this.picSettings.Margin = new System.Windows.Forms.Padding(0, 0, 0, 0);
+            this.picSettings.Location = new System.Drawing.Point(1124, 2);
+            this.picSettings.Margin = new System.Windows.Forms.Padding(0);
             this.picSettings.Name = "picSettings";
-            this.picSettings.Size = new System.Drawing.Size(20, 20);
+            this.picSettings.Size = new System.Drawing.Size(27, 25);
             this.picSettings.TabIndex = 5;
             this.picSettings.TabStop = false;
             // 
+            // picSearch
+            // 
+            this.picSearch.BackgroundImage = global::BTLDotNet.Properties.Resources.search_icon;
+            this.picSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picSearch.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picSearch.Location = new System.Drawing.Point(1097, 5);
+            this.picSearch.Margin = new System.Windows.Forms.Padding(0, 0, 0, 0);
+            this.picSearch.Name = "picSearch";
+            this.picSearch.Size = new System.Drawing.Size(20, 20);
+            this.picSearch.TabIndex = 7;
+            this.picSearch.TabStop = false;
+            this.picSearch.Click += new System.EventHandler(this.picSearch_Click);
+            // 
             // NewHomePage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(22)))), ((int)(((byte)(22)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(890, 570);
+            this.ClientSize = new System.Drawing.Size(1187, 702);
             this.ControlBox = false;
+            this.Controls.Add(this.picSearch);
             this.Controls.Add(this.kiemXoet);
             this.Controls.Add(this.picCancel);
             this.Controls.Add(this.picSettings);
@@ -373,6 +412,7 @@
             this.Controls.Add(this.label7);
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "NewHomePage";
@@ -402,6 +442,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.kiemXoet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picCancel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picSettings)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picSearch)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -434,5 +475,6 @@
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.PictureBox picSettings;
         private System.Windows.Forms.PictureBox picCancel;
+        private System.Windows.Forms.PictureBox picSearch;
     }
 }

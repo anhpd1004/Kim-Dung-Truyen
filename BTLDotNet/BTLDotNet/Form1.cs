@@ -20,7 +20,7 @@ namespace BTLDotNet
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Model.Stories stories = Model.MyDatabase.getStories();
+            Model.Stories stories = Model.MyDatabase.stories;
             string list = "";
             foreach (var story in stories.getStories())
             {

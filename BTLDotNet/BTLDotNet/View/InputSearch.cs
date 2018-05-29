@@ -15,7 +15,7 @@ namespace BTLDotNet.View
         public InputSearch()
         {
             InitializeComponent();
-
+            textBox1.Focus();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -35,7 +35,9 @@ namespace BTLDotNet.View
 
         private void InputSearch_Load(object sender, EventArgs e)
         {
-            
+            textBox1.Focus();
+            this.AutoScroll = true;
+            this.AutoSize = false;
         }
     }
 }

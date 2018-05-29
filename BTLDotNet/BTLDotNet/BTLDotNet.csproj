@@ -64,6 +64,12 @@
     <Compile Include="View\EditErrorWord.Designer.cs">
       <DependentUpon>EditErrorWord.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\FormBlur.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormBlur.Designer.cs">
+      <DependentUpon>FormBlur.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\HomePage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,6 +121,9 @@
     </Compile>
     <EmbeddedResource Include="View\EditErrorWord.resx">
       <DependentUpon>EditErrorWord.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormBlur.resx">
+      <DependentUpon>FormBlur.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\HomePage.resx">
       <DependentUpon>HomePage.cs</DependentUpon>
@@ -188,6 +197,8 @@
     <None Include="Resources\cancel.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\menu_icon.png" />
+    <None Include="Resources\nen_truyen.jpg" />
     <None Include="Resources\logo_06.png" />
     <None Include="Resources\logo_05.png" />
     <None Include="Resources\logo_04.png" />
@@ -200,6 +211,8 @@
     <None Include="Resources\back_to_home.PNG" />
     <None Include="Resources\back_icon.png" />
     <None Include="Resources\hinh_nen_truyen.jpg" />
+    <None Include="Resources\bong_den_icon.png" />
+    <None Include="Resources\bong_den_bat_icon.png" />
     <Content Include="Resources\logo_timkiem.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

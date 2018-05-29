@@ -16,6 +16,7 @@ namespace BTLDotNet.View
     {
         Settings setting;
         public int size;
+
         public NewHomePage()
         {
             InitializeComponent();
@@ -27,9 +28,9 @@ namespace BTLDotNet.View
             this.MouseLeave += NewHomePage_MouseLeave;
             wmpAnhHungXaDieu.ClickEvent += wmpAnhHungXaDieu_ClickEvent;
             wmpThanDieuDaiHiep.ClickEvent += wmpThanDieuDaiHiep_ClickEvent;
-            wmpLocDinhKi.ClickEvent +=wmpLocDinhKi_ClickEvent;
-            wmpThienLongBatBo.ClickEvent +=wmpThienLongBatBo_ClickEvent;
-            wmpTieuNgaoGiangHo.ClickEvent +=wmpTieuNgaoGiangHo_ClickEvent;
+            wmpLocDinhKi.ClickEvent += wmpLocDinhKi_ClickEvent;
+            wmpThienLongBatBo.ClickEvent += wmpThienLongBatBo_ClickEvent;
+            wmpTieuNgaoGiangHo.ClickEvent += wmpTieuNgaoGiangHo_ClickEvent;
             wmpYThienDoLongKi.ClickEvent += wmpYThienDoLongKi_ClickEvent;
             picCancel.Click += picCancel_Click;
             picSettings.Click += picSettings_Click;
@@ -37,9 +38,15 @@ namespace BTLDotNet.View
 
         void picSettings_Click(object sender, EventArgs e)
         {
+            FormBlur formBlur = new FormBlur();
+            formBlur.Size = new Size(this.Width, this.Height);
+            formBlur.Location = new Point(0, 0);
+            formBlur.BackColor = this.BackColor;
+            formBlur.Show(this);
             setting = new Settings(size);
             setting.comboValue += setting_comboValue;
             setting.ShowDialog();
+            formBlur.Dispose();
         }
 
         void setting_comboValue(object sender, EventArgs e)
@@ -47,7 +54,8 @@ namespace BTLDotNet.View
             size = setting.GetSize();
             this.Size = new Size(890 + (int)(0.2 * 907 * size), 570 + (int)(0.2 * 600 * size));
             picCancel.Location = new Point(this.Width - 5 - picCancel.Width, 3);
-            picSettings.Location = new Point(this.Width - 5 - picCancel.Width - 12 - picSettings.Width, 2);
+            picSettings.Location = new Point(this.Width - 5 - picCancel.Width - 7 - picSettings.Width, 2);
+            picSearch.Location = new Point(this.Width - 5 - picCancel.Width - 7 - picSettings.Width - 7 - picSearch.Width, 5);
             this.CenterToScreen();
             Size vd = new Size(290 + (int)(0.2 * 290 * size), 200 + (int)(0.2 * 200 * size));
             panel1.Size = vd;
@@ -88,7 +96,7 @@ namespace BTLDotNet.View
             label6.Location = new Point(0, vd.Height - label6.Height);
             kiemXoet.Size = new Size(890 + 178 * size, 520 + 104 * size);
             kiemXoet.Location = new Point(0, 50 + 10 * size);
-            label7.Font = new Font("Microsoft Sans Serif", label7.Font.Size + (int) (label7.Font.Size * 0), FontStyle.Bold);
+            label7.Font = new Font("Microsoft Sans Serif", label7.Font.Size + (int)(label7.Font.Size * 0), FontStyle.Bold);
             label7.Location = new Point((this.Width - label7.Width) / 2, 10 + 2 * size);
         }
 
@@ -96,6 +104,7 @@ namespace BTLDotNet.View
         {
             this.Close();
         }
+
         protected override void WndProc(ref Message m)
         {
             switch (m.Msg)
@@ -190,12 +199,12 @@ namespace BTLDotNet.View
         }
         private bool IsContain(Point contain, int w, int h, int x, int y)
         {
-            if((x > contain.X && x < contain.X + w) && (y > contain.Y && y < contain.Y + h)) {
+            if ((x > contain.X && x < contain.X + w) && (y > contain.Y && y < contain.Y + h))
+            {
                 return true;
             }
             return false;
         }
-
 
         void NewHomePage_MouseLeave(object sender, EventArgs e)
         {
@@ -219,7 +228,7 @@ namespace BTLDotNet.View
             timer1.Enabled = false;
         }
 
-        private void NewHomePage_Load(object sender, EventArgs e)
+        private async void NewHomePage_Load(object sender, EventArgs e)
         {
             var projectPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
 
@@ -274,7 +283,11 @@ namespace BTLDotNet.View
             kiemXoet.settings.setMode("loop", false);
             timer1.Enabled = true;
             timer2.Enabled = true;
+
+            await Model.MyDatabase.getStories();
         }
+
+
 
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -371,7 +384,7 @@ namespace BTLDotNet.View
 
         private void label1_Click(object sender, EventArgs e)
         {
-            HomePage AHXD = new HomePage(1);
+            HomePage AHXD = new HomePage(1, this);
             this.Hide();
             AHXD.Show();
         }
@@ -401,5 +414,21 @@ namespace BTLDotNet.View
 
         }
 
+        private void picSearch_Click(object sender, EventArgs e)
+        {
+            InputSearch inpSearch = new InputSearch();
+            FormBlur formBlur = new FormBlur();
+            formBlur.Size = new Size(this.Width, this.Height);
+            formBlur.Location = new Point(0, 0);
+            formBlur.BackColor = this.BackColor;
+            formBlur.Show(this);
+            if (inpSearch.ShowDialog(this) == DialogResult.OK)
+            {
+                string text = inpSearch.getInputSearch();
+                MessageBox.Show(text);
+            }
+            formBlur.Dispose();
+            inpSearch.Dispose();
+        }
     }
 }

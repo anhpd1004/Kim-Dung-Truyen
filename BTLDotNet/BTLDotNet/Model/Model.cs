@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 
 namespace BTLDotNet.Model
 {
-    class Chapter
+    public class Chapter
     {
         private int _idh;
         private string _name;
@@ -63,7 +63,7 @@ namespace BTLDotNet.Model
             return name;
         }
     }
-    class Story
+    public class Story
     {
         private int _idt;
         private string _name;
@@ -123,7 +123,7 @@ namespace BTLDotNet.Model
     }
 
     // All 
-    class Stories
+    public class Stories
     {
         private List<Story> stories = new List<Story>();
         public List<Story> getStories()
@@ -137,21 +137,22 @@ namespace BTLDotNet.Model
         }
     }
 
-    class MyDatabase
+    public class MyDatabase
     {
         private const string STR_CONNECT = "Server=localhost\\sqlexpress;Database=BTLDotNet;Integrated Security=True;MultipleActiveResultSets=True";
-        public static Stories getStories()
-        {
-            Stories stories = null;
+        public static Stories stories;
 
+        public static async Task getStories()
+        {
             using (SqlConnection con = new SqlConnection(STR_CONNECT))
             {
                 string queryStory = "SELECT * FROM tbl_story";
                 SqlCommand cmdStory = new SqlCommand(queryStory, con);
                 con.Open();
+                Stories s;
                 using (SqlDataReader reader = cmdStory.ExecuteReader())
                 {
-                    stories = new Stories();
+                    s = new Stories();
                     Story story;
                     while (reader.Read())
                     {
@@ -172,12 +173,32 @@ namespace BTLDotNet.Model
                                 story.addChapter(chap);
                             }
                         }
-                        stories.addStory(story);
+                        s.addStory(story);
+                    }
+                }
+                stories = s;
+            }
+        }
+
+        public static string getContentChap(int idh)
+        {
+            string content = "";
+
+            using (SqlConnection con = new SqlConnection(STR_CONNECT))
+            {
+                string queryStory = "SELECT contentchap FROM tbl_chap WHERE id_chap = " + idh;
+                SqlCommand cmdStory = new SqlCommand(queryStory, con);
+                con.Open();
+                using (SqlDataReader reader = cmdStory.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        content = reader["contentchap"].ToString();
                     }
                 }
             }
 
-            return stories;
+            return content;
         }
 
         public static int addStory(string name)
@@ -218,27 +239,6 @@ namespace BTLDotNet.Model
                 result = cmdStory.ExecuteNonQuery();
             }
             return result;
-        }
-
-        public static string getContentChap(int idh)
-        {
-            string content = "";
-
-            using (SqlConnection con = new SqlConnection(STR_CONNECT))
-            {
-                string queryStory = "SELECT contentchap FROM tbl_chap WHERE id_chap = " + idh;
-                SqlCommand cmdStory = new SqlCommand(queryStory, con);
-                con.Open();
-                using (SqlDataReader reader = cmdStory.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        content = reader["contentchap"].ToString();
-                    }
-                }
-            }
-
-            return content;
         }
     }
 }

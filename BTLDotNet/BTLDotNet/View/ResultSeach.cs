@@ -15,21 +15,20 @@ namespace BTLDotNet.View
     public partial class ResultSearch : Form
     {
         private string input = "";
-        private HomePage home;
+        private Form home;
 
-        public ResultSearch()
+        public ResultSearch(Form home, string input)
         {
-            //this.home = home;
-            //this.input = input;
+            this.home = home;
+            this.input = input;
             InitializeComponent();
             Search();
-            this.CenterToParent();
         }
 
         public void Search()
         {
             List<string> results = new List<string>();
-            Model.Stories stories = Model.MyDatabase.getStories();
+            Model.Stories stories = Model.MyDatabase.stories;
 
             foreach (Model.Story story in stories.getStories())
             {
@@ -59,7 +58,8 @@ namespace BTLDotNet.View
             }
 
             listBox1.DataSource = results;
-            this.Show();
+            this.CenterToParent();
+            this.Show(home);
         }
     }
 }
