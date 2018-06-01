@@ -47,6 +47,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\Alignment.cs" />
+    <Compile Include="Controller\JustifiedRichTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controller\MyRegex.cs" />
     <Compile Include="Controller\Rule.cs" />
     <Compile Include="Form1.cs">
