@@ -68,6 +68,12 @@
     <Compile Include="View\EditErrorWord.Designer.cs">
       <DependentUpon>EditErrorWord.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\FormBlur.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,6 +131,9 @@
     </Compile>
     <EmbeddedResource Include="View\EditErrorWord.resx">
       <DependentUpon>EditErrorWord.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FormBlur.resx">
       <DependentUpon>FormBlur.cs</DependentUpon>
