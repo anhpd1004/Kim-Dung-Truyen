@@ -15,7 +15,9 @@ namespace BTLDotNet.View
     public partial class NewHomePage : Form
     {
         Settings setting;
+        FormBlur formBlur;
         public int size;
+        public int volume;
 
         public NewHomePage()
         {
@@ -24,6 +26,7 @@ namespace BTLDotNet.View
             this.FormBorderStyle = FormBorderStyle.None;
             this.CenterToScreen();
             size = 0;
+            volume = 50;
             this.MouseHover += NewHomePage_MouseHover;
             this.MouseLeave += NewHomePage_MouseLeave;
             wmpAnhHungXaDieu.ClickEvent += wmpAnhHungXaDieu_ClickEvent;
@@ -34,19 +37,28 @@ namespace BTLDotNet.View
             wmpYThienDoLongKi.ClickEvent += wmpYThienDoLongKi_ClickEvent;
             picCancel.Click += picCancel_Click;
             picSettings.Click += picSettings_Click;
+            formBlur = new FormBlur();
         }
 
         void picSettings_Click(object sender, EventArgs e)
         {
-            FormBlur formBlur = new FormBlur();
+            formBlur = new FormBlur();
             formBlur.Size = new Size(this.Width, this.Height);
             formBlur.Location = new Point(0, 0);
             formBlur.BackColor = this.BackColor;
-            formBlur.Show(this);
-            setting = new Settings(size);
+            setting = new Settings(size, volume);
             setting.comboValue += setting_comboValue;
-            setting.ShowDialog();
+            setting.volumeTrack += setting_volumeTrack;
+            formBlur.Show(this);
+            setting.ShowDialog(this);
             formBlur.Dispose();
+        }
+
+        void setting_volumeTrack(object sender, EventArgs e)
+        {
+            volume = setting.GetVolume();
+            backgroundMusic.settings.volume = volume;
+            chemMusic.settings.volume = volume;
         }
 
         void setting_comboValue(object sender, EventArgs e)
@@ -57,6 +69,7 @@ namespace BTLDotNet.View
             picSettings.Location = new Point(this.Width - 5 - picCancel.Width - 7 - picSettings.Width, 2);
             picSearch.Location = new Point(this.Width - 5 - picCancel.Width - 7 - picSettings.Width - 7 - picSearch.Width, 5);
             this.CenterToScreen();
+            formBlur.Size = new Size(890 + (int)(0.2 * 907 * size), 570 + (int)(0.2 * 600 * size));
             Size vd = new Size(290 + (int)(0.2 * 290 * size), 200 + (int)(0.2 * 200 * size));
             panel1.Size = vd;
             wmpAnhHungXaDieu.Size = vd;
@@ -246,6 +259,8 @@ namespace BTLDotNet.View
             kiemXoet.uiMode = "none";
             chemMusic.uiMode = "none";
             backgroundMusic.Visible = false;
+            backgroundMusic.settings.volume = volume;
+            chemMusic.settings.volume = volume / 2;
             kiemXoet.Visible = false;
             wmpAnhHungXaDieu.uiMode = "none";
             wmpThanDieuDaiHiep.uiMode = "none";
@@ -284,7 +299,7 @@ namespace BTLDotNet.View
             timer1.Enabled = true;
             timer2.Enabled = true;
 
-            await Model.MyDatabase.getStories();
+            //await Model.MyDatabase.getStories();
         }
 
 

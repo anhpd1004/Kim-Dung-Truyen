@@ -15,6 +15,13 @@ namespace BTLDotNet.View
         public FormBlur()
         {
             InitializeComponent();
+            this.SizeChanged += FormBlur_SizeChanged;
+        }
+
+        void FormBlur_SizeChanged(object sender, EventArgs e)
+        {
+            this.Location = new Point(0, 0);
+            this.CenterToParent();
         }
 
         private void FormBlur_Load(object sender, EventArgs e)

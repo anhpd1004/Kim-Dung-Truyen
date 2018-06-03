@@ -14,13 +14,17 @@ namespace BTLDotNet.View
     public partial class Settings : Form
     {
         public event EventHandler comboValue;
+        public event EventHandler volumeTrack;
         int size;
-        public Settings(int size)
+        int volume;
+        public Settings(int size, int volume)
         {
             InitializeComponent();
             this.AllowTransparency = true;
             this.FormBorderStyle = FormBorderStyle.None;
             this.size = size;
+            this.volume = volume;
+            trackBar1.Maximum = 100;
         }
         protected override void WndProc(ref Message m)
         {
@@ -49,6 +53,17 @@ namespace BTLDotNet.View
             comboBox1.SelectedIndex = size;
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox1.SelectedIndexChanged +=comboBox1_SelectedIndexChanged;
+            lbVolume.Text = "(" + volume + ")";
+            trackBar1.Value = volume;
+            trackBar1.ValueChanged += trackBar1_ValueChanged;
+        }
+
+        void trackBar1_ValueChanged(object sender, EventArgs e)
+        {
+            volume = (int)trackBar1.Value;
+            lbVolume.Text = "(" + volume + ")";
+            if (volumeTrack != null)
+                volumeTrack(sender, e);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -75,6 +90,7 @@ namespace BTLDotNet.View
         {
             return size;
         }
+        public int GetVolume() { return this.volume; }
 
         public void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
