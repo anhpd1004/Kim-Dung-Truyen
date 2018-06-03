@@ -35,7 +35,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.listchap = new System.Windows.Forms.ListBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.contentchap = new System.Windows.Forms.RichTextBox();
+            this.contentchap = new Component.JustifiedRichTextBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -129,6 +129,8 @@
             this.contentchap.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
             this.contentchap.Size = new System.Drawing.Size(713, 483);
             this.contentchap.TabIndex = 3;
+            this.contentchap.SelectionRightIndent += 15;
+            this.contentchap.SelectionAlignment = Component.JustifiedRichTextBox.TextAlignment.Justify;
             this.contentchap.Text = "sjhjhvf";
             this.contentchap.MouseDown += new System.Windows.Forms.MouseEventHandler(this.contentchap_MouseDown);
             this.contentchap.MouseMove += new System.Windows.Forms.MouseEventHandler(this.contentchap_MouseMove);
@@ -265,7 +267,6 @@
             this.MinimizeBox = false;
             this.Name = "HomePage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Load += new System.EventHandler(this.HomePage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
@@ -282,7 +283,7 @@
 
         #endregion
         private System.Windows.Forms.ListBox listchap;
-        private System.Windows.Forms.RichTextBox contentchap;
+        private Component.JustifiedRichTextBox contentchap;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;

@@ -82,7 +82,7 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.wmpAnhHungXaDieu);
             this.panel1.Location = new System.Drawing.Point(0, 123);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(387, 246);
             this.panel1.TabIndex = 0;
@@ -107,7 +107,7 @@
             // 
             this.wmpAnhHungXaDieu.Enabled = true;
             this.wmpAnhHungXaDieu.Location = new System.Drawing.Point(0, 0);
-            this.wmpAnhHungXaDieu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.wmpAnhHungXaDieu.Margin = new System.Windows.Forms.Padding(4);
             this.wmpAnhHungXaDieu.Name = "wmpAnhHungXaDieu";
             this.wmpAnhHungXaDieu.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("wmpAnhHungXaDieu.OcxState")));
             this.wmpAnhHungXaDieu.Size = new System.Drawing.Size(290, 200);
@@ -118,7 +118,7 @@
             this.panel4.Controls.Add(this.label4);
             this.panel4.Controls.Add(this.wmpThienLongBatBo);
             this.panel4.Location = new System.Drawing.Point(0, 406);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(387, 246);
             this.panel4.TabIndex = 0;
@@ -144,7 +144,7 @@
             // 
             this.wmpThienLongBatBo.Enabled = true;
             this.wmpThienLongBatBo.Location = new System.Drawing.Point(0, 0);
-            this.wmpThienLongBatBo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.wmpThienLongBatBo.Margin = new System.Windows.Forms.Padding(4);
             this.wmpThienLongBatBo.Name = "wmpThienLongBatBo";
             this.wmpThienLongBatBo.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("wmpThienLongBatBo.OcxState")));
             this.wmpThienLongBatBo.Size = new System.Drawing.Size(290, 200);
@@ -155,7 +155,7 @@
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.wmpThanDieuDaiHiep);
             this.panel2.Location = new System.Drawing.Point(400, 123);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(387, 246);
             this.panel2.TabIndex = 0;
@@ -180,7 +180,7 @@
             // 
             this.wmpThanDieuDaiHiep.Enabled = true;
             this.wmpThanDieuDaiHiep.Location = new System.Drawing.Point(0, 0);
-            this.wmpThanDieuDaiHiep.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.wmpThanDieuDaiHiep.Margin = new System.Windows.Forms.Padding(4);
             this.wmpThanDieuDaiHiep.Name = "wmpThanDieuDaiHiep";
             this.wmpThanDieuDaiHiep.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("wmpThanDieuDaiHiep.OcxState")));
             this.wmpThanDieuDaiHiep.Size = new System.Drawing.Size(290, 200);
@@ -191,11 +191,10 @@
             this.panel5.Controls.Add(this.label5);
             this.panel5.Controls.Add(this.wmpYThienDoLongKi);
             this.panel5.Location = new System.Drawing.Point(400, 406);
-            this.panel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(387, 246);
             this.panel5.TabIndex = 0;
-            this.panel5.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
             // 
             // label5
             // 
@@ -217,7 +216,7 @@
             // 
             this.wmpYThienDoLongKi.Enabled = true;
             this.wmpYThienDoLongKi.Location = new System.Drawing.Point(0, 0);
-            this.wmpYThienDoLongKi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.wmpYThienDoLongKi.Margin = new System.Windows.Forms.Padding(4);
             this.wmpYThienDoLongKi.Name = "wmpYThienDoLongKi";
             this.wmpYThienDoLongKi.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("wmpYThienDoLongKi.OcxState")));
             this.wmpYThienDoLongKi.Size = new System.Drawing.Size(290, 200);
@@ -228,11 +227,10 @@
             this.panel6.Controls.Add(this.label6);
             this.panel6.Controls.Add(this.wmpTieuNgaoGiangHo);
             this.panel6.Location = new System.Drawing.Point(800, 406);
-            this.panel6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel6.Margin = new System.Windows.Forms.Padding(4);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(387, 246);
             this.panel6.TabIndex = 0;
-            this.panel6.Paint += new System.Windows.Forms.PaintEventHandler(this.panel5_Paint);
             // 
             // label6
             // 
@@ -254,7 +252,7 @@
             // 
             this.wmpTieuNgaoGiangHo.Enabled = true;
             this.wmpTieuNgaoGiangHo.Location = new System.Drawing.Point(0, 0);
-            this.wmpTieuNgaoGiangHo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.wmpTieuNgaoGiangHo.Margin = new System.Windows.Forms.Padding(4);
             this.wmpTieuNgaoGiangHo.Name = "wmpTieuNgaoGiangHo";
             this.wmpTieuNgaoGiangHo.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("wmpTieuNgaoGiangHo.OcxState")));
             this.wmpTieuNgaoGiangHo.Size = new System.Drawing.Size(290, 200);
@@ -265,7 +263,7 @@
             this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.wmpLocDinhKi);
             this.panel3.Location = new System.Drawing.Point(800, 123);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(387, 246);
             this.panel3.TabIndex = 0;
@@ -290,7 +288,7 @@
             // 
             this.wmpLocDinhKi.Enabled = true;
             this.wmpLocDinhKi.Location = new System.Drawing.Point(0, 0);
-            this.wmpLocDinhKi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.wmpLocDinhKi.Margin = new System.Windows.Forms.Padding(4);
             this.wmpLocDinhKi.Name = "wmpLocDinhKi";
             this.wmpLocDinhKi.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("wmpLocDinhKi.OcxState")));
             this.wmpLocDinhKi.Size = new System.Drawing.Size(290, 200);
@@ -300,7 +298,7 @@
             // 
             this.backgroundMusic.Enabled = true;
             this.backgroundMusic.Location = new System.Drawing.Point(5, 8);
-            this.backgroundMusic.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.backgroundMusic.Margin = new System.Windows.Forms.Padding(4);
             this.backgroundMusic.Name = "backgroundMusic";
             this.backgroundMusic.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("backgroundMusic.OcxState")));
             this.backgroundMusic.Size = new System.Drawing.Size(5, 5);
@@ -310,7 +308,7 @@
             // 
             this.chemMusic.Enabled = true;
             this.chemMusic.Location = new System.Drawing.Point(0, 0);
-            this.chemMusic.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chemMusic.Margin = new System.Windows.Forms.Padding(4);
             this.chemMusic.Name = "chemMusic";
             this.chemMusic.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("chemMusic.OcxState")));
             this.chemMusic.Size = new System.Drawing.Size(1, 1);
@@ -321,7 +319,7 @@
             // 
             this.kiemXoet.Enabled = true;
             this.kiemXoet.Location = new System.Drawing.Point(0, 50);
-            this.kiemXoet.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kiemXoet.Margin = new System.Windows.Forms.Padding(4);
             this.kiemXoet.Name = "kiemXoet";
             this.kiemXoet.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("kiemXoet.OcxState")));
             this.kiemXoet.Size = new System.Drawing.Size(0, 0);
@@ -345,7 +343,6 @@
             this.label7.TabIndex = 4;
             this.label7.Text = "Kim Dung Truyện";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // timer2
             // 
@@ -358,7 +355,7 @@
             this.picCancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.picCancel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.picCancel.Location = new System.Drawing.Point(1153, 4);
-            this.picCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.picCancel.Margin = new System.Windows.Forms.Padding(4);
             this.picCancel.Name = "picCancel";
             this.picCancel.Size = new System.Drawing.Size(23, 21);
             this.picCancel.TabIndex = 6;
@@ -382,7 +379,7 @@
             this.picSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.picSearch.Cursor = System.Windows.Forms.Cursors.Hand;
             this.picSearch.Location = new System.Drawing.Point(1097, 5);
-            this.picSearch.Margin = new System.Windows.Forms.Padding(0, 0, 0, 0);
+            this.picSearch.Margin = new System.Windows.Forms.Padding(0);
             this.picSearch.Name = "picSearch";
             this.picSearch.Size = new System.Drawing.Size(20, 20);
             this.picSearch.TabIndex = 7;
@@ -412,7 +409,7 @@
             this.Controls.Add(this.label7);
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "NewHomePage";

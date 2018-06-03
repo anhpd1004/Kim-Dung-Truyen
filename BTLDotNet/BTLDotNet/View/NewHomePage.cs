@@ -37,19 +37,15 @@ namespace BTLDotNet.View
             wmpYThienDoLongKi.ClickEvent += wmpYThienDoLongKi_ClickEvent;
             picCancel.Click += picCancel_Click;
             picSettings.Click += picSettings_Click;
-            formBlur = new FormBlur();
         }
 
         void picSettings_Click(object sender, EventArgs e)
         {
-            formBlur = new FormBlur();
-            formBlur.Size = new Size(this.Width, this.Height);
-            formBlur.Location = new Point(0, 0);
-            formBlur.BackColor = this.BackColor;
+            formBlur = new FormBlur(this);
+
             setting = new Settings(size, volume);
             setting.comboValue += setting_comboValue;
             setting.volumeTrack += setting_volumeTrack;
-            formBlur.Show(this);
             setting.ShowDialog(this);
             formBlur.Dispose();
         }
@@ -134,7 +130,6 @@ namespace BTLDotNet.View
 
         void wmpYThienDoLongKi_ClickEvent(object sender, AxWMPLib._WMPOCXEvents_ClickEvent e)
         {
-
             chemMusic.Ctlcontrols.play();
             label7.Visible = false;
             kiemXoet.Visible = true;
@@ -210,6 +205,7 @@ namespace BTLDotNet.View
             kiemXoet.Size = new Size(0, 0);
             label7.Visible = true;
         }
+
         private bool IsContain(Point contain, int w, int h, int x, int y)
         {
             if ((x > contain.X && x < contain.X + w) && (y > contain.Y && y < contain.Y + h))
@@ -299,14 +295,11 @@ namespace BTLDotNet.View
             timer1.Enabled = true;
             timer2.Enabled = true;
 
-            //await Model.MyDatabase.getStories();
+            await Model.MyDatabase.getStories();
         }
-
-
-
+        
         private void timer1_Tick(object sender, EventArgs e)
         {
-
             //1
             if (label1.Location.X + label1.Width < 5)
             {
@@ -377,73 +370,75 @@ namespace BTLDotNet.View
             }
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel5_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panel4_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void label1_Click(object sender, EventArgs e)
         {
-            HomePage AHXD = new HomePage(1, this);
-            this.Hide();
-            AHXD.Show();
+            if (Model.MyDatabase.getDone)
+            {
+                this.Hide();
+                new HomePage(this).Show(0);
+            }
         }
 
         private void label2_Click(object sender, EventArgs e)
         {
-
+            if (Model.MyDatabase.getDone)
+            {
+                this.Hide();
+                new HomePage(this).Show(1);
+            }
         }
 
         private void label3_Click(object sender, EventArgs e)
         {
-
+            if (Model.MyDatabase.getDone)
+            {
+                this.Hide();
+                new HomePage(this).Show(2);
+            }
         }
 
         private void label4_Click(object sender, EventArgs e)
         {
-
+            if (Model.MyDatabase.getDone)
+            {
+                this.Hide();
+                new HomePage(this).Show(3);
+            }
         }
 
         private void label5_Click(object sender, EventArgs e)
         {
-
+            if (Model.MyDatabase.getDone)
+            {
+                this.Hide();
+                new HomePage(this).Show(4);
+            }
         }
 
         private void label6_Click(object sender, EventArgs e)
         {
-
+            if (Model.MyDatabase.getDone)
+            {
+                this.Hide();
+                new HomePage(this).Show(5);
+            }
         }
 
         private void picSearch_Click(object sender, EventArgs e)
         {
-            InputSearch inpSearch = new InputSearch();
-            FormBlur formBlur = new FormBlur();
-            formBlur.Size = new Size(this.Width, this.Height);
-            formBlur.Location = new Point(0, 0);
-            formBlur.BackColor = this.BackColor;
-            formBlur.Show(this);
-            if (inpSearch.ShowDialog(this) == DialogResult.OK)
+            if (Model.MyDatabase.getDone)
             {
-                string text = inpSearch.getInputSearch();
-                MessageBox.Show(text);
+                InputSearch inpSearch = new InputSearch();
+                FormBlur formBlur = new FormBlur(this);
+
+                if (inpSearch.ShowDialog(this) == DialogResult.OK)
+                {
+                    string text = inpSearch.getInputSearch();
+                    ResultSearch result = new ResultSearch(this, null, text, null);
+                }
+                formBlur.Dispose();
+                inpSearch.Dispose();
             }
-            formBlur.Dispose();
-            inpSearch.Dispose();
         }
     }
 }

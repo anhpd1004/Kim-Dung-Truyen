@@ -6,11 +6,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace BTLDotNet.Controller
+namespace BTLDotNet.Component
 {
     public class JustifiedRichTextBox : RichTextBox
     {
-
         [DllImport("user32", CharSet = CharSet.Auto)]
         private static extern int SendMessage(HandleRef hWnd, int _msg, int wParam, ref PARAFORMAT2 _pf);
 
@@ -103,5 +102,11 @@ namespace BTLDotNet.Controller
                                                      TO_ADVANCEDTYPOGRAPHY);
         }
 
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            this.ResumeLayout(false);
+
+        }
     }
 }

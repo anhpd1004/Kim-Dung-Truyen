@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using System.Media;
+using System.Threading;
+using System.IO;
 
 namespace BTLDotNet.View
 {
@@ -18,21 +20,82 @@ namespace BTLDotNet.View
         private int idh;
         private int iStory;//truyện được click từ bên NewHomePage truyền sang
         private Model.Story story;
-        private NewHomePage newHome;
+        public NewHomePage newHome;
+        private Thread _Thread;
+        private string filesave;
+        private int chapautoscroll = -1;
+        private int posautoscroll = -1;
+        private int poslen = 0;
 
-        public HomePage(int iStory, NewHomePage page)
+        public HomePage(NewHomePage page)
         {
             InitializeComponent();
             newHome = page;
-            this.iStory = iStory;
         }
 
-        private void HomePage_Load(object sender, EventArgs e)
+        public void setAuto(int chap, int pos, int len)
         {
+            chapautoscroll = chap;
+            posautoscroll = pos;
+            poslen = 0;
+        }
+
+        public void Show(int iStory)
+        {
+            this.iStory = iStory;
+            switch (iStory)
+            {
+                case 0:
+                    pictureBox1.BackgroundImage = Properties.Resources.logo_01;
+                    break;
+                case 1:
+                    pictureBox1.BackgroundImage = Properties.Resources.logo_02;
+                    break;
+                case 2:
+                    pictureBox1.BackgroundImage = Properties.Resources.logo_03;
+                    break;
+                case 3:
+                    pictureBox1.BackgroundImage = Properties.Resources.logo_04;
+                    break;
+                case 4:
+                    pictureBox1.BackgroundImage = Properties.Resources.logo_05;
+                    break;
+                case 5:
+                    pictureBox1.BackgroundImage = Properties.Resources.logo_06;
+                    break;
+            }
             contentchap.Text = "";
+            listchap.DataSource = null;
+            Show();
+
+            string[] files = Directory.GetFiles(Application.StartupPath);
+            foreach (string file in files)
+            {
+                string[] token = file.Split('\\');
+                if (token[token.Length - 1].StartsWith(iStory + "_"))
+                {
+                    filesave = token[token.Length - 1];
+                    break;
+                }
+            }
+
+            if (chapautoscroll == -1)
+            {
+                string[] datasave = filesave.Split('_');
+                chapautoscroll = int.Parse(datasave[1]);
+                posautoscroll = int.Parse(datasave[2]);
+            }
+
             story = Model.MyDatabase.stories.getStories()[iStory];
-            List<Model.Chapter> list = story.getChapters();
-            listchap.DataSource = list;
+            if (story != null)
+            {
+                List<Model.Chapter> list = story.getChapters();
+                if (list != null && list.Count > 0)
+                {
+                    listchap.DataSource = list;
+                    listchap.SelectedIndex = chapautoscroll;
+                }
+            }
         }
 
         protected override void WndProc(ref Message m)
@@ -51,23 +114,35 @@ namespace BTLDotNet.View
 
         private void listchap_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Model.Chapter chap = (Model.Chapter)listchap.SelectedItem;
-            idh = chap.idh;
-            contentchap.Text = chap.content.Replace("\r\n", "\n");
-            MarkWrongRhythm();
-
-            contentchap.SelectionStart = 0;
-            contentchap.SelectionIndent = 100;
-            contentchap.SelectionHangingIndent = -70;
-            contentchap.SelectionRightIndent = 30;
+            _Thread = new Thread(SelectChap);
+            _Thread.Start();
         }
 
-        public void MarkWrongRhythm()
+        public void SelectChap()
         {
-            contentchap.SelectionStart = 0;
-            contentchap.SelectionColor = Color.Black;
+            Model.Chapter chap = null;
+            listchap.Invoke((MethodInvoker)delegate ()
+            {
+                chap = (Model.Chapter)listchap.SelectedItem;
+                chapautoscroll = listchap.SelectedIndex;
+            });
+            if (chap != null)
+            {
+                idh = chap.idh;
+                contentchap.Invoke((MethodInvoker)delegate () { contentchap.Text = chap.content; });
+                MarkWrongRhythm(posautoscroll, poslen);
+                posautoscroll = 0;
+                poslen = 0;
+            }
+        }
 
-            string content = contentchap.Text.Replace("\r\n", "\n");
+        public void MarkWrongRhythm(int start, int len)
+        {
+            contentchap.Invoke((MethodInvoker)delegate () { contentchap.SelectionStart = 0; });
+            contentchap.Invoke((MethodInvoker)delegate () { contentchap.SelectionColor = Color.White; });
+
+            string content = ""; ;
+            contentchap.Invoke((MethodInvoker)delegate () { content = contentchap.Text; });
             string[] rhythms = Controller.Rhythm.splitRhythm(content);
             int ind = 0;
             long tryparse;
@@ -80,7 +155,7 @@ namespace BTLDotNet.View
                         do
                         {
                             ind = content.IndexOf(rhythm, ind) + rhythm.Length;
-                            contentchap.Select(ind - rhythm.Length, rhythm.Length);
+                            contentchap.Invoke((MethodInvoker)delegate () { contentchap.Select(ind - rhythm.Length, rhythm.Length); });
                             char cBehind = content[ind];
                             if (Controller.Rhythm.isSeparator(cBehind))
                             {
@@ -89,7 +164,7 @@ namespace BTLDotNet.View
                                     char cFront = content[ind - rhythm.Length - 1];
                                     if (Controller.Rhythm.isSeparator(cFront))
                                     {
-                                        contentchap.SelectionColor = Color.Red;
+                                        contentchap.Invoke((MethodInvoker)delegate () { contentchap.SelectionColor = Color.Red; });
                                         break;
                                     }
                                 }
@@ -102,6 +177,12 @@ namespace BTLDotNet.View
                     }
                 }
             }
+
+            contentchap.Invoke((MethodInvoker)delegate ()
+            {
+                contentchap.Select(start, len);
+                contentchap.ScrollToCaret();
+            });
         }
 
         private void contentchap_MouseMove(object sender, MouseEventArgs e)
@@ -187,8 +268,9 @@ namespace BTLDotNet.View
                                             chap.content = Model.MyDatabase.getContentChap(idh);
 
                                             contentchap.Text = chap.content.Replace("\r\n", "\n");
-                                            MarkWrongRhythm();
-                                            contentchap.Select(start, end - start + 1);
+
+                                            _Thread = new Thread(() => MarkWrongRhythm(start, end - start + 1));
+                                            _Thread.Start();
                                         }
                                     }
                                     break;
@@ -202,28 +284,39 @@ namespace BTLDotNet.View
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
+            SaveFile();
+
             newHome.Dispose();
             this.Dispose();
         }
 
         private void pictureBox4_Click(object sender, EventArgs e)
         {
+            SaveFile();
+
             newHome.Show();
             this.Hide();
+        }
+
+        public void SaveFile()
+        {
+            filesave = Application.StartupPath + @"\" + filesave;
+            File.Delete(filesave);
+            Point P = new Point(0, 0);
+            int CharIndex = contentchap.GetCharIndexFromPosition(P);
+            filesave = Application.StartupPath + @"\" + iStory + "_" + chapautoscroll + "_" + CharIndex;
+            File.Create(filesave);
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             InputSearch inpSearch = new InputSearch();
-            FormBlur formBlur = new FormBlur();
-            formBlur.Size = new Size(this.Width, this.Height);
-            formBlur.Location = new Point(0, 0);
-            formBlur.BackColor = this.BackColor;
-            formBlur.Show(this);
+            FormBlur formBlur = new FormBlur(this);
+
             if (inpSearch.ShowDialog(this) == DialogResult.OK)
             {
                 string text = inpSearch.getInputSearch();
-                ResultSearch result = new ResultSearch(this, text);
+                ResultSearch result = new ResultSearch(this, this, text, story);
             }
             formBlur.Dispose();
             inpSearch.Dispose();

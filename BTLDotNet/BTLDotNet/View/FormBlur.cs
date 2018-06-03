@@ -12,9 +12,16 @@ namespace BTLDotNet.View
 {
     public partial class FormBlur : Form
     {
-        public FormBlur()
+        private Form parent;
+
+        public FormBlur(Form parent)
         {
             InitializeComponent();
+            this.parent = parent;
+            Size = new Size(this.parent.Width, this.parent.Height);
+            Location = new Point(0, 0);
+            BackColor = this.parent.BackColor;
+            Show(this.parent);
             this.SizeChanged += FormBlur_SizeChanged;
         }
 

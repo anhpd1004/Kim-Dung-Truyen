@@ -40,6 +40,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormBlur";
             this.Opacity = 0.8D;
+            this.ShowInTaskbar = false;
             this.Load += new System.EventHandler(this.FormBlur_Load);
             this.ResumeLayout(false);
 

@@ -138,7 +138,8 @@ namespace BTLDotNet.Controller
             new Rule2(),
             new Rule3(),
             new Rule4(),
-            new Rule5()
+            new Rule5(),
+            new Rule6()
         };
 
         public static bool IsValid(string rhythm)
@@ -149,6 +150,7 @@ namespace BTLDotNet.Controller
                 {
                     return false;
                 }
+                if (i == 4) return true;
             }
             return true;
         }
@@ -205,8 +207,8 @@ namespace BTLDotNet.Controller
         {
             string[] arr1 = { "e", "ê", "i", "y" };
             string[] arr2 = { "a", "ă", "â", "o", "ô", "ơ", "u", "ư" };
-            string[] arr3 = { "k", "gh" };
-            string[] arr4 = { "c", "g" };
+            string[] arr3 = { "k", "gh", "ngh" };
+            string[] arr4 = { "c", "g", "ng" };
             word = Rhythm.RemoveTone(word);
             Rhythm rhythm = Rhythm.EscapeRhythm(word.ToLower());// tach
             if (!(rhythm.HeadConsonant == ""))
@@ -292,9 +294,38 @@ namespace BTLDotNet.Controller
             return "ERROR: Số lượng thanh điệu quá lớn";
         }
     }
-
-    //kiểm tra sự ghép của phụ âm đầu và vần
+    // Kiểm tra các trường hợp phụ âm đầu đặc biệt với giê
     class Rule5 : Rule
+    {
+        public override bool IsValid(string rhythm)
+        {
+            int len = rhythm.Length;
+            string s = Rhythm.RemoveTone(rhythm.ToLower());
+            string xxx = "";
+            if (len > 3)
+            {
+                xxx = s.Substring(0, 3);
+                if (!xxx.Equals("giê"))
+                    return true;
+                string spelling = rhythm.Substring(1, len - 1);
+                if (!MyRule.SPELLING.Contains(Rhythm.RemoveTone(spelling)))
+                {
+                    return false;
+                }
+                if (MyRule.WRONG_SPELLING_AND_TONE.Contains(spelling))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        public override string Explain()
+        {
+            return "Error: Sai vần.";
+        }
+    }
+    //kiểm tra sự ghép của phụ âm đầu và vần
+    class Rule6 : Rule
     {
         public override bool IsValid(string word)
         {

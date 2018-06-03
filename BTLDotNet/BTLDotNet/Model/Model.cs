@@ -13,6 +13,7 @@ namespace BTLDotNet.Model
         private string _name;
         private string _content;
         private string _excerpt;
+
         public int idh
         {
             get
@@ -24,6 +25,7 @@ namespace BTLDotNet.Model
                 _idh = value;
             }
         }
+
         public string name
         {
             get
@@ -35,6 +37,7 @@ namespace BTLDotNet.Model
                 _name = value;
             }
         }
+
         public string content
         {
             get
@@ -46,6 +49,7 @@ namespace BTLDotNet.Model
                 _content = value;
             }
         }
+
         public string excerpt
         {
             get
@@ -63,6 +67,7 @@ namespace BTLDotNet.Model
             return name;
         }
     }
+
     public class Story
     {
         private int _idt;
@@ -141,6 +146,7 @@ namespace BTLDotNet.Model
     {
         private const string STR_CONNECT = "Server=localhost\\sqlexpress;Database=BTLDotNet;Integrated Security=True;MultipleActiveResultSets=True";
         public static Stories stories;
+        public static bool getDone = false;
 
         public static async Task getStories()
         {
@@ -178,6 +184,7 @@ namespace BTLDotNet.Model
                 }
                 stories = s;
             }
+            getDone = true;
         }
 
         public static string getContentChap(int idh)
@@ -226,9 +233,7 @@ namespace BTLDotNet.Model
             }
             return result;
         }
-
-
-
+        
         public static int Update(string query)
         {
             int result = 0;
