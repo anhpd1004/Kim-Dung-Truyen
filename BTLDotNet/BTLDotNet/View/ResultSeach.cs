@@ -70,7 +70,7 @@ namespace BTLDotNet.View
                         int start = match.Index;
                         int len = match.Value.Length;
                         ResultRow item = new ResultRow();
-                        item.index_story = story.idt;
+                        item.index_story = story.idt - 1;
                         item.index_chap = story.getChapters().IndexOf(chap);
                         item.start = start;
                         item.len = len;
@@ -85,7 +85,7 @@ namespace BTLDotNet.View
                             int start = rs.begin;
                             int len = rs.end - rs.begin;
                             ResultRow item = new ResultRow();
-                            item.index_story = story.idt;
+                            item.index_story = story.idt - 1;
                             item.index_chap = story.getChapters().IndexOf(chap);
                             item.start = start;
                             item.len = len;
