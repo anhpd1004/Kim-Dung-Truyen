@@ -129,7 +129,11 @@ namespace BTLDotNet.View
             if (chap != null)
             {
                 idh = chap.idh;
-                contentchap.Invoke((MethodInvoker)delegate () { contentchap.Text = chap.content; });
+                contentchap.Invoke((MethodInvoker)delegate ()
+                {
+                    contentchap.Text = chap.content;
+                    // contentchap.Text = "kien kiem trumg lung ling lang lieng tuing taing yen yến yên yện yển";
+                });
                 MarkWrongRhythm(posautoscroll, poslen);
                 posautoscroll = 0;
                 poslen = 0;
@@ -138,10 +142,10 @@ namespace BTLDotNet.View
 
         public void MarkWrongRhythm(int start, int len)
         {
-            contentchap.Invoke((MethodInvoker)delegate () { contentchap.SelectionStart = 0; });
+            contentchap.Invoke((MethodInvoker)delegate () { contentchap.Select(0, contentchap.Text.Length); /* contentchap.SelectionStart = 0; */ });
             contentchap.Invoke((MethodInvoker)delegate () { contentchap.SelectionColor = Color.White; });
 
-            string content = ""; ;
+            string content = "";
             contentchap.Invoke((MethodInvoker)delegate () { content = contentchap.Text; });
             string[] rhythms = Controller.Rhythm.splitRhythm(content);
             int ind = 0;
@@ -152,11 +156,21 @@ namespace BTLDotNet.View
                 {
                     if (!rhythm.Equals(string.Empty) && !Controller.MyRule.IsValid(rhythm))
                     {
+                        if (content.IndexOf(rhythm, ind) == 0)
+                        {
+                            // contentchap.Invoke((MethodInvoker)delegate () { contentchap.Select(ind - rhythm.Length, rhythm.Length); });
+                            // contentchap.Invoke((MethodInvoker)delegate () { contentchap.SelectionColor = Color.Red; });
+                        }
                         do
                         {
                             ind = content.IndexOf(rhythm, ind) + rhythm.Length;
                             contentchap.Invoke((MethodInvoker)delegate () { contentchap.Select(ind - rhythm.Length, rhythm.Length); });
                             char cBehind = content[ind];
+                            if (ind >= content.Length || ind <= rhythm.Length)
+                            {
+                                contentchap.Invoke((MethodInvoker)delegate () { contentchap.SelectionColor = Color.Red; });
+                                break;
+                            }
                             if (Controller.Rhythm.isSeparator(cBehind))
                             {
                                 if (ind > (rhythm.Length + 1))
@@ -169,7 +183,7 @@ namespace BTLDotNet.View
                                     }
                                 }
                             }
-                        } while (true);
+                        } while (content.IndexOf(rhythm, ind) != -1);
                     }
                     else
                     {

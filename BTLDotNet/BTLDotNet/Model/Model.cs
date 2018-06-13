@@ -152,7 +152,7 @@ namespace BTLDotNet.Model
         {
             using (SqlConnection con = new SqlConnection(STR_CONNECT))
             {
-                string queryStory = "SELECT * FROM story";
+                string queryStory = "SELECT * FROM tbl_story";
                 SqlCommand cmdStory = new SqlCommand(queryStory, con);
                 con.Open();
                 Stories s;
@@ -165,7 +165,7 @@ namespace BTLDotNet.Model
                         story = new Story();
                         story.idt = Int32.Parse(reader["id_story"].ToString());
                         story.name = reader["name"].ToString();
-                        string queryChap = "SELECT * FROM chap WHERE id_story = " + story.idt;
+                        string queryChap = "SELECT * FROM tbl_chap WHERE id_story = " + story.idt;
                         SqlCommand cmdChap = new SqlCommand(queryChap, con);
                         using (SqlDataReader readchap = cmdChap.ExecuteReader())
                         {
@@ -193,7 +193,7 @@ namespace BTLDotNet.Model
 
             using (SqlConnection con = new SqlConnection(STR_CONNECT))
             {
-                string queryStory = "SELECT contentchap FROM chap WHERE id_chap = " + idh;
+                string queryStory = "SELECT contentchap FROM tbl_chap WHERE id_chap = " + idh;
                 SqlCommand cmdStory = new SqlCommand(queryStory, con);
                 con.Open();
                 using (SqlDataReader reader = cmdStory.ExecuteReader())
@@ -213,7 +213,7 @@ namespace BTLDotNet.Model
             int result = 0;
             //using (SqlConnection con = new SqlConnection(STR_CONNECT))
             //{
-            //    string queryStory = "INSERT INTO story (name) VALUES (N'" + name + "')";
+            //    string queryStory = "INSERT INTO tbl_story (name) VALUES (N'" + name + "')";
             //    SqlCommand cmdStory = new SqlCommand(queryStory, con);
             //    con.Open();
             //    result = cmdStory.ExecuteNonQuery();
@@ -226,7 +226,7 @@ namespace BTLDotNet.Model
             int result = 0;
             //using (SqlConnection con = new SqlConnection(STR_CONNECT))
             //{
-            //    string queryStory = "INSERT INTO chap (id_story, name, contentchap) VALUES (" + idt + ", N'" + name + "', N'" + content + "')";
+            //    string queryStory = "INSERT INTO tbl_chap (id_story, name, contentchap) VALUES (" + idt + ", N'" + name + "', N'" + content + "')";
             //    SqlCommand cmdStory = new SqlCommand(queryStory, con);
             //    con.Open();
             //    result = cmdStory.ExecuteNonQuery();

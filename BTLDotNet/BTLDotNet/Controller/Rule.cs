@@ -150,7 +150,6 @@ namespace BTLDotNet.Controller
                 {
                     return false;
                 }
-                if (i == 4) return true;
             }
             return true;
         }
@@ -441,7 +440,7 @@ namespace BTLDotNet.Controller
 
         public static string[] splitRhythm(string content)
         {
-            char[] separator = new char[] { ' ', ',', '.', ';', '(', ')', '[', ']', '{', '}', '/', '\\', '\'', '"', '-', '~', '!', '?', '*', '\n', '\t', ':' };
+            char[] separator = new char[] { ' ', ',', '.', ';', '(', ')', '[', ']', '{', '}', '/', '\\', '\'', '"', '-', '~', '!', '?', '*', '\n', '\t', ':', '“', '”' };
             return content.Split(separator);
         }
 
@@ -453,7 +452,7 @@ namespace BTLDotNet.Controller
 
         public static bool isSeparator(char c)
         {
-            char[] separator = new char[] { ' ', ',', '.', ';', '(', ')', '[', ']', '{', '}', '/', '\\', '\'', '"', '-', '~', '!', '?', '*', '\n', '\t', ':' };
+            char[] separator = new char[] { ' ', ',', '.', ';', '(', ')', '[', ']', '{', '}', '/', '\\', '\'', '"', '-', '~', '!', '?', '*', '\n', '\t', ':', '“', '”' };
             return separator.Contains(c);
         }
 

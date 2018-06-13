@@ -49,7 +49,7 @@ namespace BTLDotNet.View
             //        return;
             //    }
             //}
-            string query = "UPDATE chap SET contentchap = N'" + content.Replace(word, textBox1.Text) + "' WHERE id_chap = " + idh;
+            string query = "UPDATE tbl_chap SET contentchap = N'" + content.Replace(word, textBox1.Text) + "' WHERE id_chap = " + idh;
             Model.MyDatabase.Update(query);
             this.DialogResult = DialogResult.OK;
             this.Dispose();
